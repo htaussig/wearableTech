@@ -1,2 +1,1 @@
-# wearableTech
-Wearable Technology final project
+# htaussig.github.io
