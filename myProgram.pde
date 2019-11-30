@@ -71,7 +71,7 @@ void setup(){
   //    /4 for now instead of width / 2 so we can see it
   mid = width / 4;
 
-  easings = new p5.Ease();
+  //easings = new p5.Ease();
 
   backCol = color('#222831');
 
@@ -294,8 +294,9 @@ void draw(){
         var t1 = timePassed - FADEINTIME;
 
         if(t1 < LOADUPTIME){
-          let easings = new p5.Ease();
-          var multiplier = easings.quadraticInOut(t1 / LOADUPTIME);
+          //let easings = new p5.Ease();
+          //var multiplier = easings.quadraticInOut(t1 / LOADUPTIME);
+          var multiplier = 1.0;
           percentage *= multiplier;
         }
       }
