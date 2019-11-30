@@ -76,7 +76,7 @@ function setup() {
   //    /4 for now instead of width / 2 so we can see it
   mid = width / 4;
 
-  easings = new p5.Ease();
+  //easings = new p5.Ease();
 
   backCol = color('#222831');
 
