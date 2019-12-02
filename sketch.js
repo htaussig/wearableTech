@@ -4,9 +4,10 @@ const txtSize = 16;
 const textToBoxPadding = 10;
 const INTRO = 0;
 const EXPLAIN = 1;
-const WORDS = 2;
-const LOADING = 3;
-const RESULTS = 4;
+const COUNTDOWN = 2;
+const WORDS = 3;
+const LOADING = 4;
+const RESULTS = 5;
 const boxHeight = 40;
 const boxWidth = 600;
 const dy = 80;
@@ -25,7 +26,7 @@ let formDone = false;
 const LOADTHICKNESS = 15;
 
 //Words scene
-const TOTALNUMWORDS = 2; //8 - 10
+const TOTALNUMWORDS = 8; //8 - 10
 const DELAYBETWEENWORDS = 4.75; //5?
 const NOWORDTIME = .5;
 
@@ -51,7 +52,7 @@ let loadingWords;
 let resultsButton;
 let doneLoading = false;
 
-const LOADINGSPEED = .2; //1.6
+const LOADINGSPEED = 1.6; //1.6
 
 //for results page
 let easings;
@@ -72,7 +73,7 @@ function preload() {
 function setup() {
   createCanvas(screen.width, screen.height);
 
-  sceneNum = LOADING;
+  sceneNum = 0;
 
   sceneTimer = millis();
 
@@ -103,7 +104,7 @@ function setup() {
     "I can forgive others easily", "I always know exactly what I want", "I usually stick to quiter and less crowded areas",
     "I understand others feelings easily", "My mood can change very quickly",
     "I often talk about my own emotions", "I rarely feel insecure",
-    "I like to work in spontaneous bursts of energy rather in organized and consistent efforts",
+    "I like to work in spontaneous bursts of energy rather than organized and consistent efforts",
   ];
 
   words = shuffle(words);
@@ -115,6 +116,8 @@ function setup() {
 
 function draw() {
   background(backCol);
+
+  console.log(sceneNum);
 
   fill(255);
   textSize(40);
@@ -186,8 +189,20 @@ function draw() {
     pop();
   }
 
-  if (sceneNum == WORDS) {
+  if(sceneNum == COUNTDOWN){
+    var time = Math.floor(getTimePassed());
+    time = 3 - time;
 
+    if(time > 0){
+      text(time, mid, height / 2);
+    }
+    else if(getTimePassed() > 3.5){
+      nextScene();
+    }
+    
+  }
+
+  if (sceneNum == WORDS) {
 
     //word ideas taken from 16personalities.com
     //generate words
@@ -499,7 +514,7 @@ class Button {
     }
 
     this.over = function () {
-      console.log(this.hovering);
+      //console.log(this.hovering);
       if (mouseX <= x + w / 2 && mouseX >= x - w / 2 && mouseY <= y + h / 2 && mouseY >= y - h / 2) {
         this.hovering = true;
         // if(isMousePressed){
