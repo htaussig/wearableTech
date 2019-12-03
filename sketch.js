@@ -109,7 +109,7 @@ function setup() {
     "I like discussing different views\nand theories on what the world could\nlook like in the future",
     "I listen to my heart over my head", "I make decisions on a whim",
     "I can forgive others easily", "I always know exactly what I want", "I usually stick to\nquiter and less crowded areas",
-    "I understand others\nfeelings easily", "My mood can change very quickly",
+    "I understand others' feelings easily", "My mood can change very quickly",
     "I often talk about\nmy own emotions", "I rarely feel insecure",
     "I like to work in spontaneous bursts\nof energy rather than organized\nand consistent efforts",
   ];
@@ -124,7 +124,7 @@ function setup() {
 function draw() {
   background(backCol);
 
-  console.log(sceneNum);
+  //console.log(sceneNum);
 
   fill(255);
   textSize(40);
@@ -164,8 +164,8 @@ function draw() {
     const textLines = [];
     textLines.push("The Azure machine learning algorithm will display a new\nphrase every 4 seconds and ask you to repeat it");
     textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each phrase");
-    textLines.push("It will also take note of the volume and tone of your voice, but currently\nwon't take it into account too much because of the circuit playground’s poor mic quality");
-    textLines.push("");
+    textLines.push("It will also take note of the volume and tone of your voice, but currently won't\ntake it into account too much because of the circuit playground’s poor mic quality");
+    //textLines.push("");
     textLines.push("The algorithm has been trained on tens of thousands of participants,\nand predicts correctly around 30 percent of the time");
     textLines.push();
     textLines.push();
@@ -173,11 +173,11 @@ function draw() {
     textLines.push();
     textLines.push();
 
-    var theY = TITLESPACE + 100;
+    var theY = TITLESPACE + 0;
     var dy1 = 50;
     textLines.forEach(theText => {
       text(theText, mid, theY);
-      theY += dy1;
+      theY += dy1 * 2;
     });
 
     //console.log(getTimePassed());
@@ -196,34 +196,62 @@ function draw() {
     pop();
   }
 
-  if(sceneNum == COUNTDOWN){
-    
-    if(ready == 0){
+  if (sceneNum == COUNTDOWN) {
+
+    textSize(20);
+    if (ready == 0) {
       var str = "Please attach the GSR sensor to either pointer finger with the velcro straps\nit will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
-      text(str, mid, height / 2);
-      if(doneButton.clicked){
+      text(str, mid, TITLESPACE);
+
+      //console.log(doneButton.clicked);
+
+      if (doneButton.clicked) {
         ready++;
+        resetSceneTimer();
+      }
+
+      const timePassed = getTimePassed();
+      const timeToWaitFor = 3;
+      if (timePassed > timeToWaitFor) {
+        var theAlpha = ((timePassed - timeToWaitFor) / 2) * 255;
+        theAlpha = min(theAlpha, 255);
+        doneButton.alpha = theAlpha;
+
+        doneButton.over();
+        doneButton.display();
       }
     }
-    else if(ready == 1){
-      var str = "The screen will display a new phrase every 4 seconds and ask you to repeat it, \nThere will be 8-10 phrases for you to say\nAfter the Azure algorithm will try to guess your Zodiac Sign";
-      text(str, mid, height / 2);
-      if(beginButton.clicked){
+    else if (ready == 1) {
+      var str = "The screen will display a new phrase every 4 seconds and ask you to repeat it, \nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
+      text(str, mid, TITLESPACE);
+      if (beginButton.clicked) {
         ready++;
+        resetSceneTimer();
+      }
+
+      const timePassed = getTimePassed();
+      const timeToWaitFor = 2;
+      if (timePassed > timeToWaitFor) {
+        var theAlpha = ((timePassed - timeToWaitFor) / 2) * 255;
+        theAlpha = min(theAlpha, 255);
+        beginButton.alpha = theAlpha;
+
+        beginButton.over();
+        beginButton.display();
       }
     }
-    else{
+    else {
       var time = Math.floor(getTimePassed());
       time = 3 - time;
-  
-      if(time > 0){
+
+      if (time > 0) {
         text(time, mid, height / 2);
       }
-      else if(getTimePassed() > 3.5){
+      else if (getTimePassed() > 3.5) {
         nextScene();
       }
     }
-  
+
   }
 
   if (sceneNum == WORDS) {
@@ -272,8 +300,8 @@ function draw() {
   if (sceneNum == LOADING) {
     //text('Loading scene', 200, 100);
 
-    // console.log("loading");
-    // console.log(resultsButton);
+    //console.log("loading");
+    //console.log(resultsButton);
 
     if (!doneLoading) {
       for (var i = 0; i < circs.length; i++) {
@@ -349,6 +377,8 @@ function draw() {
     textAlign(CENTER, CENTER);
     noStroke();
     text("Azure's top 3 guesses:\n(the percentages represent Azure's confidence in it's prediction)", 0, 0);
+
+    text("Reload the page to try again", 0, 600);
     pop();
 
 
@@ -362,8 +392,6 @@ function draw() {
     else {
       theAlpha = 255;
     }
-
-
 
     push();
     for (var i = 0; i < zodiacs.length; i++) {
@@ -440,13 +468,13 @@ function draw() {
 //print(zodSigns);
 
 function initLoadingScene() {
-  circ1 = new Circle(mid * 2, height / 2, width / 3);
+  circ1 = new Circle(mid, height / 2, (width / 3) * 2);
   circs.push(circ1);
 
-  circ2 = new Circle(mid * 2, height / 2, (width / 3) - LOADTHICKNESS * 2);
+  circ2 = new Circle(mid, height / 2, (((width / 3) * 2) - LOADTHICKNESS * 2));
   circs.push(circ2);
 
-  circ3 = new Circle(mid * 2, height / 2, (width / 3) - LOADTHICKNESS * 4);
+  circ3 = new Circle(mid, height / 2, ((width / 3) * 2)  - LOADTHICKNESS * 4);
   circs.push(circ3);
 
   loadingWords = [];
@@ -526,7 +554,7 @@ class Button {
       stroke(this.col);
       //ellipse(this.x, this.y, diam, diam);
       rect(this.x, this.y, this.w, this.h);
-      this.clicked = false;
+      //this.clicked = false;
 
       strokeWeight(1);
       textSize(20);
@@ -555,8 +583,9 @@ class Button {
     this.click = function () {
       if (this.hovering && !this.clicked) {
         this.clicked = true;
+        //console.log(this.clicked);
         this.hovering = false;
-        if(isNextSceneButton){
+        if (isNextSceneButton) {
           nextScene();
         }
       }
@@ -597,4 +626,7 @@ function mouseReleased() {
   hiButton.click();
   readyButton.click();
   resultsButton.click();
+
+  doneButton.click();
+  beginButton.click();
 }
