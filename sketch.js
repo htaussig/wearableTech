@@ -25,6 +25,9 @@ let formDone = false;
 //Load Scene
 const LOADTHICKNESS = 15;
 
+//countdown scene
+let ready = false;
+
 //Words scene
 const TOTALNUMWORDS = 8; //8 - 10
 const DELAYBETWEENWORDS = 4.75; //5?
@@ -190,16 +193,23 @@ function draw() {
   }
 
   if(sceneNum == COUNTDOWN){
-    var time = Math.floor(getTimePassed());
-    time = 3 - time;
-
-    if(time > 0){
-      text(time, mid, height / 2);
-    }
-    else if(getTimePassed() > 3.5){
-      nextScene();
-    }
     
+    if(!ready){
+      var str = "Please attach the the sensor to either pointer finger with the velcro/n it will be used to measure your galvanic skin response/n which is basically just the amount of sweat on your hands";
+      text(str, mid, height / 2);
+    }
+    else{
+      var time = Math.floor(getTimePassed());
+      time = 3 - time;
+  
+      if(time > 0){
+        text(time, mid, height / 2);
+      }
+      else if(getTimePassed() > 3.5){
+        nextScene();
+      }
+    }
+  
   }
 
   if (sceneNum == WORDS) {
