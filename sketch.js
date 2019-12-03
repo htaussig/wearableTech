@@ -26,7 +26,7 @@ let formDone = false;
 const LOADTHICKNESS = 15;
 
 //Words scene
-const TOTALNUMWORDS = 8; //8 - 10
+const TOTALNUMWORDS = 3; //8 - 10
 const DELAYBETWEENWORDS = 4.75; //5?
 const NOWORDTIME = .5;
 
@@ -71,7 +71,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(screen.width + 200, screen.height);
+  createCanvas(screen.width + 1200, screen.height);
 
   sceneNum = 0;
 
