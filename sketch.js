@@ -26,7 +26,7 @@ let formDone = false;
 const LOADTHICKNESS = 15;
 
 //countdown scene
-let ready = false;
+let ready = 0;
 
 //Words scene
 const TOTALNUMWORDS = 8; //8 - 10
@@ -62,7 +62,8 @@ let easings;
 
 let backCol;
 
-
+let doneButton;
+let beginButton;
 
 function preload() {
   //theFont = loadFont('assets/nidus.ttf');
@@ -91,9 +92,12 @@ function setup() {
   isMousePressed = false;
 
   //initialize the hi button
-  hiButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!");
-  readyButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "I'm ready!");
-  resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results");
+  hiButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!", true);
+  readyButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
+  resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results", true);
+
+  doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
+  beginButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
   //console.log(hiButton);
 
   initLoadingScene();
@@ -158,8 +162,8 @@ function draw() {
     textFont(theFont, 20);
 
     const textLines = [];
-    textLines.push("The Azure machine learning algorithm will display a new\nword every 4 seconds and ask you to repeat it");
-    textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each word");
+    textLines.push("The Azure machine learning algorithm will display a new\nphrase every 4 seconds and ask you to repeat it");
+    textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each phrase");
     textLines.push("It will also take note of the volume and tone of your voice, but currently\nwon't take it into account too much because of the circuit playground’s poor mic quality");
     textLines.push("");
     textLines.push("The algorithm has been trained on tens of thousands of participants,\nand predicts correctly around 30 percent of the time");
@@ -194,9 +198,19 @@ function draw() {
 
   if(sceneNum == COUNTDOWN){
     
-    if(!ready){
-      var str = "Please attach the the sensor to either pointer finger with the velcro/n it will be used to measure your galvanic skin response/n which is basically just the amount of sweat on your hands";
+    if(ready == 0){
+      var str = "Please attach the GSR sensor to either pointer finger with the velcro straps\nit will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
       text(str, mid, height / 2);
+      if(doneButton.clicked){
+        ready++;
+      }
+    }
+    else if(ready == 1){
+      var str = "The screen will display a new phrase every 4 seconds and ask you to repeat it, \nThere will be 8-10 phrases for you to say\nAfter the Azure algorithm will try to guess your Zodiac Sign";
+      text(str, mid, height / 2);
+      if(beginButton.clicked){
+        ready++;
+      }
     }
     else{
       var time = Math.floor(getTimePassed());
@@ -479,7 +493,7 @@ class Circle {
 
 class Button {
   ///Button Constructor
-  constructor(x, y, w, h, words) {
+  constructor(x, y, w, h, words, isNextSceneButton) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -542,7 +556,9 @@ class Button {
       if (this.hovering && !this.clicked) {
         this.clicked = true;
         this.hovering = false;
-        nextScene();
+        if(isNextSceneButton){
+          nextScene();
+        }
       }
     }
   }
