@@ -155,11 +155,11 @@ function draw() {
     textFont(theFont, 20);
 
     const textLines = [];
-    textLines.push("The Azure machine learning algorithm will display a new word every 4 seconds and ask you to repeat it");
-    textLines.push("The circuit playground will measure your Galvanic Skin Response - skin conductivity, a measure of emotional arousal - while you see and say each word");
-    textLines.push("It will also take note of volume and tone of voice, but this currently isn’t working too well with the circuit playground’s poor mic quality");
+    textLines.push("The Azure machine learning algorithm will display a new\nword every 4 seconds and ask you to repeat it");
+    textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each word");
+    textLines.push("It will also take note of the volume and tone of your voice, but currently\nwon't take it into account too much because of the circuit playground’s poor mic quality");
     textLines.push("");
-    textLines.push("The algorithm has been trained on tens of thousands of participants, and predicts correctly around 30 percent of the time");
+    textLines.push("The algorithm has been trained on tens of thousands of participants,\nand predicts correctly around 30 percent of the time");
     textLines.push();
     textLines.push();
     textLines.push();
