@@ -93,11 +93,11 @@ function setup() {
 
   //initialize the hi button
   hiButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!", true);
-  readyButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
+  readyButton = new Button(mid, (height * 3 / 5) + 100, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
   resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results", true);
 
-  doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
-  beginButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
+  doneButton = new Button(mid, height * 2 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
+  beginButton = new Button(mid, height * 2 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
   //console.log(hiButton);
 
   initLoadingScene();
@@ -162,7 +162,8 @@ function draw() {
     textFont(theFont, 20);
 
     const textLines = [];
-    textLines.push("The Azure machine learning algorithm will display a new\nphrase every 4 seconds and ask you to repeat it");
+    textLines.push("The Zodiac Predictor will try to determine your\nzodiac sign using the Azure machine learning algorithm");
+    textLines.push("The algorithm will display a new phrase\nevery 4 seconds and ask you to repeat it");
     textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each phrase");
     textLines.push("It will also take note of the volume and tone of your voice, but currently won't\ntake it into account too much because of the circuit playground’s poor mic quality");
     //textLines.push("");
@@ -200,7 +201,7 @@ function draw() {
 
     textSize(20);
     if (ready == 0) {
-      var str = "Please attach the GSR sensor to either pointer finger with the velcro straps\nit will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
+      var str = "Please attach the GSR sensor to either pointer finger with the velcro straps.\nt will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
       text(str, mid, TITLESPACE);
 
       //console.log(doneButton.clicked);
@@ -222,7 +223,7 @@ function draw() {
       }
     }
     else if (ready == 1) {
-      var str = "The screen will display a new phrase every 4 seconds and ask you to repeat it, \nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
+      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your zodiac with if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
       text(str, mid, TITLESPACE);
       if (beginButton.clicked) {
         ready++;
