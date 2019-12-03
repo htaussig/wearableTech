@@ -162,7 +162,7 @@ function draw() {
     textFont(theFont, 20);
 
     const textLines = [];
-    textLines.push("The Zodiac Predictor will try to determine your\nzodiac sign using the Azure machine learning algorithm");
+    textLines.push("The Zodiac Predictor will try to determine your\nZodiac Sign using the Azure machine learning algorithm");
     textLines.push("The algorithm will display a new phrase\nevery 4 seconds and ask you to repeat it");
     textLines.push("The circuit playground will measure your Galvanic Skin Response (skin conductivity,\na measure of emotional arousal) while you see and say each phrase");
     textLines.push("It will also take note of the volume and tone of your voice, but currently won't\ntake it into account too much because of the circuit playground’s poor mic quality");
@@ -223,7 +223,7 @@ function draw() {
       }
     }
     else if (ready == 1) {
-      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your zodiac with if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
+      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac with if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
       text(str, mid, TITLESPACE);
       if (beginButton.clicked) {
         ready++;
@@ -479,7 +479,7 @@ function initLoadingScene() {
   circs.push(circ3);
 
   loadingWords = [];
-  loadingWords.push('Matching to the common traits of zodiacs');
+  loadingWords.push('Matching to the common traits of Zodiacs');
   loadingWords.push('Azure Algorithm analyzing for probable personality traits');
   loadingWords.push('Cleaning and analyzing data');
 }
