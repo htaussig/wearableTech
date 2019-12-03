@@ -26,7 +26,7 @@ let formDone = false;
 const LOADTHICKNESS = 15;
 
 //Words scene
-const TOTALNUMWORDS = 3; //8 - 10
+const TOTALNUMWORDS = 8; //8 - 10
 const DELAYBETWEENWORDS = 4.75; //5?
 const NOWORDTIME = .5;
 
@@ -71,7 +71,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(screen.width + 200, screen.height);
+  createCanvas(screen.width + 100, screen.height);
 
   sceneNum = 0;
 
@@ -95,16 +95,16 @@ function setup() {
 
   initLoadingScene();
 
-  words = ["I easily get upset", "I worry whether I made a good impression on somewhat I met",
-    "I often rely on other people to keep a conversation going", "I am very affectionate with people I care about",
-    "I am still bothered by mistakes I made a long time ago", "I can stay calm under a lot of pressure",
+  words = ["I easily get upset", "I worry whether I made a good\nimpression on somewhat I met",
+    "I often rely on other people\nto keep a conversation going", "I am very affectionate with people I care about",
+    "I am still bothered by\nmistakes I made a long time ago", "I can stay calm under a lot of pressure",
     "I am dedicated and focused on my goals", "I often cry in front of others",
-    "I like discussing different views and theories on what the world could look like in the future",
+    "I like discussing different views\nand theories on what the world could\nlook like in the future",
     "I listen to my heart over my head", "I make decisions on a whim",
-    "I can forgive others easily", "I always know exactly what I want", "I usually stick to quiter and less crowded areas",
-    "I understand others feelings easily", "My mood can change very quickly",
-    "I often talk about my own emotions", "I rarely feel insecure",
-    "I like to work in spontaneous bursts of energy rather than organized and consistent efforts",
+    "I can forgive others easily", "I always know exactly what I want", "I usually stick to\nquiter and less crowded areas",
+    "I understand others\nfeelings easily", "My mood can change very quickly",
+    "I often talk about\nmy own emotions", "I rarely feel insecure",
+    "I like to work in spontaneous bursts\nof energy rather than organized\nand consistent efforts",
   ];
 
   words = shuffle(words);
@@ -416,13 +416,13 @@ function draw() {
 //print(zodSigns);
 
 function initLoadingScene() {
-  circ1 = new Circle(mid, height / 2, width / 3);
+  circ1 = new Circle(mid * 2, height / 2, width / 3);
   circs.push(circ1);
 
-  circ2 = new Circle(mid, height / 2, (width / 3) - LOADTHICKNESS * 2);
+  circ2 = new Circle(mid * 2, height / 2, (width / 3) - LOADTHICKNESS * 2);
   circs.push(circ2);
 
-  circ3 = new Circle(mid, height / 2, (width / 3) - LOADTHICKNESS * 4);
+  circ3 = new Circle(mid * 2, height / 2, (width / 3) - LOADTHICKNESS * 4);
   circs.push(circ3);
 
   loadingWords = [];
