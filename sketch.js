@@ -75,7 +75,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(screen.width + 100, screen.height);
+  createCanvas(getWidth(), getHeight());
 
   sceneNum = 0;
 
@@ -102,16 +102,16 @@ function setup() {
 
   initLoadingScene();
 
-  words = ["I easily get upset", "I worry whether I made a good\nimpression on somewhat I met",
+  words = ["I easily get upset", "I worry whether I made a good impression on somewhat I met",
     "I often rely on other people\nto keep a conversation going", "I am very affectionate with people I care about",
-    "I am still bothered by\nmistakes I made a long time ago", "I can stay calm under a lot of pressure",
+    "I am still bothered by mistakes I made a long time ago", "I can stay calm under a lot of pressure",
     "I am dedicated and focused on my goals", "I often cry in front of others",
-    "I like discussing different views\nand theories on what the world could\nlook like in the future",
+    "I like discussing different views and theories\non what the world could look like in the future",
     "I listen to my heart over my head", "I make decisions on a whim",
-    "I can forgive others easily", "I always know exactly what I want", "I usually stick to\nquiter and less crowded areas",
+    "I can forgive others easily", "I always know exactly what I want", "I usually stick to quieter and less crowded areas",
     "I understand others' feelings easily", "My mood can change very quickly",
-    "I often talk about\nmy own emotions", "I rarely feel insecure",
-    "I like to work in spontaneous bursts\nof energy rather than organized\nand consistent efforts",
+    "I often talk about my own emotions", "I rarely feel insecure",
+    "I like to work in spontaneous bursts of energy\nrather than organized and consistent efforts",
   ];
 
   words = shuffle(words);
@@ -629,4 +629,25 @@ function mouseReleased() {
 
   doneButton.click();
   beginButton.click();
+}
+
+//used from https://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code
+function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+
+function getHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  );
 }
