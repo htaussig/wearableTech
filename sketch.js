@@ -155,7 +155,7 @@ function draw() {
     textFont(theFont, 20);
 
     const textLines = [];
-    textLines.push("The azure machine learning algorithm will display a new word every 4 seconds and ask you to repeat it");
+    textLines.push("The Azure machine learning algorithm will display a new word every 4 seconds and ask you to repeat it");
     textLines.push("The circuit playground will measure your Galvanic Skin Response - skin conductivity, a measure of emotional arousal - while you see and say each word");
     textLines.push("It will also take note of volume and tone of voice, but this currently isn’t working too well with the circuit playground’s poor mic quality");
     textLines.push("");
