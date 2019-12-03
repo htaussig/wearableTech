@@ -71,14 +71,14 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(screen.width + 1200, screen.height);
+  createCanvas(screen.width + 200, screen.height);
 
   sceneNum = 0;
 
   sceneTimer = millis();
 
   //    /4 for now instead of width / 2 so we can see it
-  mid = screen.width / 2;
+  mid = width / 2;
 
   easings = new p5.Ease();
 
