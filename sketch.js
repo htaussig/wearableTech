@@ -1,5 +1,5 @@
 
-const TITLESPACE = 300;
+const TITLESPACE = 150;
 const txtSize = 16;
 const textToBoxPadding = 10;
 const INTRO = 0;
@@ -92,12 +92,12 @@ function setup() {
   isMousePressed = false;
 
   //initialize the hi button
-  hiButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!", true);
-  readyButton = new Button(mid, (height * 3 / 5) + 100, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
+  hiButton = new Button(mid, height * 4 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!", true);
+  readyButton = new Button(mid, (height * 4 / 5) + 100, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
   resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results", true);
 
-  doneButton = new Button(mid, height * 2 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
-  beginButton = new Button(mid, height * 2 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
+  doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
+  beginButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
   //console.log(hiButton);
 
   initLoadingScene();
@@ -200,7 +200,10 @@ function draw() {
   if (sceneNum == COUNTDOWN) {
 
     textSize(20);
+
     if (ready == 0) {
+      push();
+      textAlign(CENTER, TOP);
       var str = "Please attach the GSR sensor to either pointer finger with the velcro straps.\nt will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
       text(str, mid, TITLESPACE);
 
@@ -221,8 +224,12 @@ function draw() {
         doneButton.over();
         doneButton.display();
       }
+      pop();
     }
     else if (ready == 1) {
+      push();
+      textAlign(CENTER, TOP);
+
       var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac with if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
       text(str, mid, TITLESPACE);
       if (beginButton.clicked) {
@@ -240,6 +247,7 @@ function draw() {
         beginButton.over();
         beginButton.display();
       }
+      pop();
     }
     else {
       var time = Math.floor(getTimePassed());
@@ -252,7 +260,6 @@ function draw() {
         nextScene();
       }
     }
-
   }
 
   if (sceneNum == WORDS) {
@@ -475,7 +482,7 @@ function initLoadingScene() {
   circ2 = new Circle(mid, height / 2, (((width / 3) * 2) - LOADTHICKNESS * 2));
   circs.push(circ2);
 
-  circ3 = new Circle(mid, height / 2, ((width / 3) * 2)  - LOADTHICKNESS * 4);
+  circ3 = new Circle(mid, height / 2, ((width / 3) * 2) - LOADTHICKNESS * 4);
   circs.push(circ3);
 
   loadingWords = [];
@@ -535,6 +542,8 @@ class Button {
 
     this.display = function () {
       this.col.setAlpha(this.alpha);
+
+      textAlign(CENTER, CENTER);
 
       rectMode(CENTER);
       push();
