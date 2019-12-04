@@ -77,7 +77,7 @@ function preload() {
 function setup() {
   createCanvas(getWidth(), getHeight());
 
-  sceneNum = LOADING;
+  sceneNum = 0;
 
   sceneTimer = millis();
 
