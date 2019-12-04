@@ -96,7 +96,7 @@ function setup() {
   readyButton = new Button(mid, (height * 4 / 5), BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
   resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results", true);
 
-  doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
+  doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Next", false);
   beginButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Begin", false);
   //console.log(hiButton);
 
@@ -207,6 +207,32 @@ function draw() {
     if (ready == 0) {
       push();
       textAlign(CENTER, TOP);
+      var str = "The Azure Algorithm will try to determine your perosnality type based on your level\nof emotional arousal when reading these phrases. Then it will try to\npredict your Zodiac Sign based on these traits.";
+      text(str, mid, TITLESPACE);
+
+      //console.log(doneButton.clicked);
+
+      if (doneButton.clicked) {
+        ready++;
+        doneButton.clicked = false;
+        resetSceneTimer();
+      }
+
+      const timePassed = getTimePassed();
+      const timeToWaitFor = 3;
+      if (timePassed > timeToWaitFor) {
+        var theAlpha = ((timePassed - timeToWaitFor) / 2) * 255;
+        theAlpha = min(theAlpha, 255);
+        doneButton.alpha = theAlpha;
+
+        doneButton.over();
+        doneButton.display();
+      }
+      pop();
+    }
+    else if (ready == 1) {
+      push();
+      textAlign(CENTER, TOP);
       var str = "Please attach the GSR sensor to either pointer finger with the velcro straps.\nIt will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
       text(str, mid, TITLESPACE);
 
@@ -229,7 +255,7 @@ function draw() {
       }
       pop();
     }
-    else if (ready == 1) {
+    else if (ready == 2) {
       push();
       textAlign(CENTER, TOP);
 
@@ -479,18 +505,18 @@ function draw() {
 //print(zodSigns);
 
 function initLoadingScene() {
-  circ1 = new Circle(mid, height / 2, (width / 3) * 2);
+  circ1 = new Circle(mid, height / 2, (width / 3) * 1.2);
   circs.push(circ1);
 
-  circ2 = new Circle(mid, height / 2, (((width / 3) * 2) - LOADTHICKNESS * 2));
+  circ2 = new Circle(mid, height / 2, (((width / 3) * 1.2) - LOADTHICKNESS * 2));
   circs.push(circ2);
 
-  circ3 = new Circle(mid, height / 2, ((width / 3) * 2) - LOADTHICKNESS * 4);
+  circ3 = new Circle(mid, height / 2, ((width / 3) * 1.2) - LOADTHICKNESS * 4);
   circs.push(circ3);
 
   loadingWords = [];
   loadingWords.push('Matching to the common traits of Zodiacs');
-  loadingWords.push('Azure Algorithm analyzing for probable personality traits');
+  loadingWords.push('Azure Algorithm analyzing for\nprobable personality traits');
   loadingWords.push('Cleaning and analyzing data');
 }
 
