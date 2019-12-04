@@ -1,5 +1,5 @@
 
-const TITLESPACE = 126;
+const TITLESPACE = 80;
 const txtSize = 16;
 const textToBoxPadding = 10;
 const INTRO = 0;
@@ -130,7 +130,7 @@ function draw() {
   textSize(40);
   textAlign(CENTER, CENTER);
   textFont(theFont);
-  text('Zodiac Predictor', mid, TITLESPACE / 2);
+  text('Zodiac Predictor', mid, 20);
 
   //console.log(getTimePassed());
   //intro scene:
@@ -174,7 +174,7 @@ function draw() {
     textLines.push();
     textLines.push();
 
-    var theY = TITLESPACE + 0;
+    var theY = TITLESPACE + 20;
     var dy1 = 35;
     textLines.forEach(theText => {
       text(theText, mid, theY);
