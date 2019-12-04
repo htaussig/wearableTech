@@ -244,11 +244,11 @@
           for (i = 0; i < range.values.length; i++) {
             var row = range.values[i];
             // Print columns A and B, which correspond to indices 0 and 1.
-            percentages[0] = (Math.random() * 20) + 30; //20-50         
-            percentages[1] = (Math.random() * 10) + 15; //15-25
+            percentages[0] = (Math.random() * 30) + 40; //40-70         
+            percentages[1] = (Math.random() * 20) + 25; //25-45
             percentages[2] = (Math.random() * 10) + 15; //15-25
-            const pcntg1Max = 100 - percentages[0] - percentages[1] - 14; //do I mean min?
-            percentages[2] = Math.min(percentages[2], pcntg1Max);
+            //const pcntg1Max = 100 - percentages[0] - percentages[1] - 14; //do I mean min?
+            //percentages[2] = Math.min(percentages[2], pcntg1Max);
             // if (percentages[2] > percentages[1]) {
             //   const temp = percentages[1];
             //   percentages[1] = percentages[2];
@@ -274,7 +274,7 @@
             //console.log(otherSigns);
             zodiacs[2] = otherSigns.pop();
             //console.log(zodiacs[2]);
-            zodiacs = shuffle(zodiacs);
+            //zodiacs = shuffle(zodiacs);
 
             //console.log(splitBDay);
             //console.log(intSplitBDay);

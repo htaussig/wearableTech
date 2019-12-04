@@ -77,7 +77,7 @@ function preload() {
 function setup() {
   createCanvas(getWidth(), getHeight());
 
-  sceneNum = 0;
+  sceneNum = LOADING;
 
   sceneTimer = millis();
 
@@ -417,7 +417,8 @@ function draw() {
     noStroke();
     text("Azure's top 3 guesses:\n(the percentages represent Azure's confidence in it's prediction)", 0, 0);
 
-    text("Reload the page to try again", 0, 600);
+    textSize(20)
+    text("Reload the page to have the Zodiac Predictor\nguess your Zodiac Sign!", 0, height * (3.5 / 5));
     pop();
 
 
@@ -463,7 +464,7 @@ function draw() {
       push();
 
       const x = mid - boxWidth / 2;
-      const y = i * dy + 30
+      const y = i * dy + 60
       translate(x, y);
 
       theCol = color('#eeeeee');
