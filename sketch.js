@@ -210,6 +210,8 @@ function draw() {
       var str = "The Azure Algorithm will try to determine your perosnality type based on your level\nof emotional arousal when reading these phrases. Then it will try to\npredict your Zodiac Sign based on these traits.";
       text(str, mid, TITLESPACE);
 
+      textSize(10)
+      text("Azure uses personality determining phrases from 16Peronalities.com", mid, height * (4 / 5));
       //console.log(doneButton.clicked);
 
       if (doneButton.clicked) {
@@ -259,7 +261,7 @@ function draw() {
       push();
       textAlign(CENTER, TOP);
 
-      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
+      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, the Azure algorithm will try to determine your Zodiac Sign";
       text(str, mid, TITLESPACE);
       if (beginButton.clicked) {
         ready++;
@@ -410,7 +412,7 @@ function draw() {
 
     textSize(16);
     push();
-    translate(mid, -50);
+    translate(mid, 0);
     textAlign(CENTER, CENTER);
     noStroke();
     text("Azure's top 3 guesses:\n(the percentages represent Azure's confidence in it's prediction)", 0, 0);
@@ -515,7 +517,7 @@ function initLoadingScene() {
   circs.push(circ3);
 
   loadingWords = [];
-  loadingWords.push('Matching to the common traits of Zodiacs');
+  loadingWords.push('Matching to the common\ntraits of Zodiacs');
   loadingWords.push('Azure Algorithm analyzing for\nprobable personality traits');
   loadingWords.push('Cleaning and analyzing data');
 }
