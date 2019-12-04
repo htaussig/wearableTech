@@ -1,5 +1,5 @@
 
-const TITLESPACE = 80;
+const TITLESPACE = 100;
 const txtSize = 16;
 const textToBoxPadding = 10;
 const INTRO = 0;
@@ -148,8 +148,11 @@ function draw() {
     else {
       //text('scene: ' + sceneNum, 90, 20);
       push();
-      textSize(16)
-      text("A button will appear here after you fill out the Google form!", mid, TITLESPACE);
+      textSize(32);
+      text("Use me to predict your Zodiac Sign!", mid, TITLESPACE + 30);
+
+      textSize(16);
+      text("A button will appear here after you fill out the Google form!", mid, TITLESPACE + 80);
       pop();
     }
     //hiButton.display();
@@ -204,7 +207,7 @@ function draw() {
     if (ready == 0) {
       push();
       textAlign(CENTER, TOP);
-      var str = "Please attach the GSR sensor to either pointer finger with the velcro straps.\nt will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
+      var str = "Please attach the GSR sensor to either pointer finger with the velcro straps.\nIt will be used to measure your galvanic skin response\n(essentially the amount of sweat on your hands)";
       text(str, mid, TITLESPACE);
 
       //console.log(doneButton.clicked);
@@ -230,7 +233,7 @@ function draw() {
       push();
       textAlign(CENTER, TOP);
 
-      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac with if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
+      var str = "The screen will display a new phrase every 4 seconds.\n You can either say it out loud or only read it, but Azure will\nhave more data to guess your Zodiac if you say the phrases out loud\n\nThere will be 8-10 phrases for you to say\nThen, Azure algorithm will try to determine your Zodiac Sign";
       text(str, mid, TITLESPACE);
       if (beginButton.clicked) {
         ready++;
