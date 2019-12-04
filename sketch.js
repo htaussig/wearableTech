@@ -1,5 +1,5 @@
 
-const TITLESPACE = 150;
+const TITLESPACE = 126;
 const txtSize = 16;
 const textToBoxPadding = 10;
 const INTRO = 0;
@@ -93,7 +93,7 @@ function setup() {
 
   //initialize the hi button
   hiButton = new Button(mid, height * 4 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Let's go!", true);
-  readyButton = new Button(mid, (height * 4 / 5) + 100, BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
+  readyButton = new Button(mid, (height * 4 / 5), BUTTONWIDTH, BUTTONHEIGHT, "Continue", true);
   resultsButton = new Button(mid, (height * 1 / 2) + 6, BUTTONWIDTH, BUTTONHEIGHT, "See Results", true);
 
   doneButton = new Button(mid, height * 3 / 5, BUTTONWIDTH, BUTTONHEIGHT, "Done", false);
@@ -175,7 +175,7 @@ function draw() {
     textLines.push();
 
     var theY = TITLESPACE + 0;
-    var dy1 = 50;
+    var dy1 = 35;
     textLines.forEach(theText => {
       text(theText, mid, theY);
       theY += dy1 * 2;
